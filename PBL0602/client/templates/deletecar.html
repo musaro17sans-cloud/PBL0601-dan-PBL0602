@@ -1,0 +1,39 @@
+{% include 'header.html' %}
+<body>
+  <div class="top-accent"></div>
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card-elegant">
+          <div class="card-header text-white py-3 px-4" style="background: linear-gradient(135deg, #be123c, #e11d48); border: none;">
+            <h5 class="mb-0 font-weight-bold">Delete Data</h5>
+          </div>
+          <div class="card-body p-5 bg-white text-center">
+            <h4 class="mb-3 font-weight-bold" style="color: #0f172a;">
+              Hapus mobil <span class="text-danger">"{{ car.carname }}"</span>?
+            </h4>
+            <p class="text-muted mb-4">
+              Brand: <strong>{{ car.carbrand }}</strong> &bull; Model: <strong>{{ car.carmodel }}</strong> &bull; Price: <strong class="text-success">${{ car.carprice }}</strong>
+            </p>
+            <div class="alert alert-danger d-inline-block px-4 py-2" style="border-radius: 8px; font-size: 0.9rem;">
+              Tindakan ini bersifat permanen dan data tidak dapat dikembalikan.
+            </div>
+
+            <form role="form" action="{{ url_for('deletecarsave') }}" method="POST" class="mt-4 pt-3 border-top">
+              <input type="hidden" name="id" value="{{ car.id }}">
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="{{ url_for('readcar') }}" class="btn btn-outline-secondary px-4" style="border-radius: 8px;">
+                  &larr; Batal
+                </a>
+                <button type="submit" class="btn text-white px-5 font-weight-bold" style="border-radius: 8px; background: linear-gradient(135deg, #be123c, #e11d48); border: none; box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);">
+                  Hapus Permanen
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+{% include 'footer.html' %}
